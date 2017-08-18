@@ -18,7 +18,7 @@ method:'GET'
 });
 ```
 
-### 可以将$http当做函数来使用，去获取mockup的json数据
+### 可以将$http当做函数来使用，获取mockup的json数据
 ```
 $http({
 method:'GET',
@@ -34,10 +34,16 @@ params:{
 这个键的值是一个字符串map或对象，会被转换成查询字符串追加在URL后面。如果值不是字符串，会被JSON序列化。
 比如这个：
 ```
-//参数会转为？name=ari的形式
-$http({
-params:{'name':'ari'}
-});
+调用$get方法：
+this.getRequests = function () {
+    var params = {'type': "user"};
+    var config = (params) ? {'params': params} : {};
+    return apiService.get('/api/approval/requests/', config)
+	.error(function (data) {
+	    toastService.add('error', gettext('Unable to retrieve requests records.'));
+	});
+};
+以上参数会转为？type=user的形式
 ```
 ④data(字符串或者对象)
 这个对象中包含了将会被当作消息体发送给服务器的数据。通常在发送POST请求时使用。
@@ -50,8 +56,7 @@ AngularJS传递给then（）方法的响应对象包含了四个属性。
 ◇status
 响应的HTTP状态码
 ◇headers
-这个函数是头信息的getter函数，可以接受一个参数，用来获取对应名字值
-success(), error()和then()的区别在于，success和error返回了处理过的数据，没有status和headers,只有具体的data对象
+这个函数是头信息的getter函数，可以接受一个参数，用来获取对应名字值  
 
 例如，用如下代码获取X-Auth-ID的值：
 ```
@@ -68,6 +73,8 @@ resp.headers('X-Auth-ID');
 
 ◇statusText（字符串）
 这个字符串是响应的HTTP状态文本。
+
+**success(), error()和then()的区别在于，success和error返回了处理过的数据，没有status和headers,只有具体的data对象**
 
 ### 缓存HTTP请求
 默认情况下，$http服务不会对请求进行本地缓存。在发送单独的请求时，我们可以通过向$http请求传入一个布尔值或者一个缓存实例来启用缓存。
