@@ -50,11 +50,11 @@ this.getUsers = function () {
 
 ### 响应对象
 
-AngularJS传递给then（）方法的响应对象包含了四个属性。
+AngularJS传递给then（）方法的响应对象包含了四个属性。  
 ◇data
-这个数据代表转换过后的响应体（如果定义了转换的话）
+这个数据代表转换过后的响应体（如果定义了转换的话）  
 ◇status
-响应的HTTP状态码
+响应的HTTP状态码  
 ◇headers
 这个函数是头信息的getter函数，可以接受一个参数，用来获取对应名字值  
 
