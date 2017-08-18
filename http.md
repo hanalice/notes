@@ -28,22 +28,22 @@ params:{
 });
 ```
 其中设置对象可以包含以下主要的键：  
-①method: GET/DELETE/HEAD/JSONP/POST/PUT
-②url:绝对的或者相对的请求目标
+①method: GET/DELETE/HEAD/JSONP/POST/PUT  
+②url:绝对的或者相对的请求目标  
 ③params(字符串map或者对象)
 这个键的值是一个字符串map或对象，会被转换成查询字符串追加在URL后面。如果值不是字符串，会被JSON序列化。
 比如这个：
 ```
 调用$get方法：
-this.getRequests = function () {
-    var params = {'type': "user"};
+this.getUsers = function () {
+    var params = {'sex': "male"};
     var config = (params) ? {'params': params} : {};
-    return apiService.get('/api/approval/requests/', config)
+    return apiService.get('/api/users/', config)
 	.error(function (data) {
-	    toastService.add('error', gettext('Unable to retrieve requests records.'));
+	    toastService.add('error', gettext('Unable to retrieve users.'));
 	});
 };
-以上参数会转为？type=user的形式
+以上参数会转为？sex=male的形式
 ```
 ④data(字符串或者对象)
 这个对象中包含了将会被当作消息体发送给服务器的数据。通常在发送POST请求时使用。
