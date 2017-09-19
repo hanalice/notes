@@ -3,11 +3,17 @@
 # 查看远程origin信息
 git remote show origin
 
+# 查看有哪些remote repertories
+$ git remote -v
+
 # 查看本地所有分支
 git branch -vv
 
 # 关联远程分支到本地分支
 git branch --set-upstream local_branch origin/remote_branch
+
+# fetch 远程分支,一下origin是远程主机别名
+git fetch origin <remote_branch>:<local_branch>
 
 # 删除remote 分支
 git push origin --delete <branchName>
@@ -29,5 +35,19 @@ git reset –soft <commit-ID>
 
 # 彻底回退到某个版本，本地的源码也会变为上一个版本的内容
 git reset –hard <commit-ID>
+# push 修改到remote
+git push -f origin <branchName>
+
+# 基于远程主机origin 分支master 创建新的分支
+git checkout -b newBranch origin/master
+
+# 本地A分支的内容想要merge到本地B分支
+git checkout B
+git merge A
+
+# 将本地分支合并到远程分支
+git merge origin/master
+或者
+git rebase origin/master
 
 ```
