@@ -50,4 +50,7 @@ git merge origin/master
 或者
 git rebase origin/master
 
+# 合并多次提交commit记录, commit-id 是不需要合并的commit的hash值
+git rebase -i <commit-id>
+
 ```
